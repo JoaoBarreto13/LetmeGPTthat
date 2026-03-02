@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --text-color: #f8fafc;
+  --box-bg: rgba(30, 41, 59, 0.6);
+}
+
+[data-theme="light"] {
+  --bg-primary: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  --text-color: #0f172a;
+  --box-bg: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 20px;
+  background: var(--box-bg);
+  backdrop-filter: blur(12px);
+  transition: background 0.4s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.fake-mouse {
+  position: absolute;
+  width: 22px;
+  height: 32px;
+  display: none;
+  pointer-events: none;
+}
+
+#fakeSearch {
+  min-height: 60px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+}

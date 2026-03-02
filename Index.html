@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Just GPT It</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <div class="container" id="container">
+
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()">Alternar Tema</button>
+    </div>
+
+    <h1>Just GPT It</h1>
+
+    <div id="home">
+      <input type="text" id="pergunta" placeholder="O que a pessoa deveria perguntar?" />
+      <button onclick="gerarLink()">Gerar Link</button>
+      <p id="resultado"></p>
+    </div>
+
+    <div id="animacao" class="hidden">
+      <div id="fakeSearch"></div>
+      <div id="fakeSend">Enviar</div>
+    </div>
+
+    <div class="fake-mouse" id="fakeMouse">
+      <img src="assets/svg/cursor.svg" alt="cursor" />
+    </div>
+
+  </div>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
