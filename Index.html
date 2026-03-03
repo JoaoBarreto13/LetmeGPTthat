@@ -11,29 +11,76 @@
 </head>
 <body>
 
-  <div class="container" id="container">
+  <!-- Theme toggle -->
+  <div class="theme-toggle-btn">
+    <button onclick="toggleTheme()" title="Alternar Tema">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon">🌙</span>
+    </button>
+  </div>
 
-    <div class="theme-toggle">
-      <button onclick="toggleTheme()">Alternar Tema</button>
+  <!-- HOME screen -->
+  <div id="home" class="home-screen">
+    <div class="home-header">
+      <div class="logo-badge">GPT</div>
+      <h1 class="home-title">Just GPT It</h1>
+      <p class="home-subtitle">Porque algumas perguntas já foram respondidas 😄</p>
     </div>
 
-    <h1>Just GPT It</h1>
-
-    <div id="home">
-      <input type="text" id="pergunta" placeholder="O que a pessoa deveria perguntar?" />
-      <button onclick="gerarLink()">Gerar Link</button>
-      <p id="resultado"></p>
+    <div class="input-area">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="pergunta"
+          class="chat-input"
+          placeholder="O que a pessoa deveria ter perguntado ao ChatGPT?"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter') gerarLink()"
+        />
+        <button class="send-btn" onclick="gerarLink()" title="Gerar Link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="input-hint">Gere um link e mande para aquela pessoa 😏</p>
     </div>
 
-    <div id="animacao" class="hidden">
-      <div id="fakeSearch"></div>
-      <div id="fakeSend">Enviar</div>
+    <div id="resultado" class="result-box"></div>
+  </div>
+
+  <!-- ANIMATION screen -->
+  <div id="animacao" class="hidden anim-screen">
+    <div class="anim-header">
+      <div class="anim-logo">
+        <div class="logo-badge small">GPT</div>
+        <span>ChatGPT</span>
+      </div>
     </div>
 
-    <div class="fake-mouse" id="fakeMouse">
-      <img src="assets/svg/cursor.svg" alt="cursor" />
+    <div class="anim-messages">
+      <div class="anim-message user-bubble">
+        <div id="fakeSearch" class="fake-search-text"></div>
+      </div>
     </div>
 
+    <div class="anim-input-row">
+      <div class="anim-input-box">
+        <span class="anim-placeholder">Mensagem para o ChatGPT</span>
+        <div id="fakeSend" class="anim-send-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <p class="anim-disclaimer">Redirecionando você ao ChatGPT…</p>
+  </div>
+
+  <!-- Fake cursor -->
+  <div class="fake-mouse" id="fakeMouse">
+    <img src="assets/svg/cursor.svg" alt="cursor" />
   </div>
 
   <script src="assets/js/theme.js"></script>

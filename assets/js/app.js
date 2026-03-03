@@ -19,29 +19,26 @@ function gerarLink() {
     "?q=" +
     encodeURIComponent(pergunta);
 
-  document.getElementById("resultado").innerHTML =
+  const resultado = document.getElementById("resultado");
+  resultado.innerHTML =
     `Link para enviar:<br><br>
      <a href="${link}" target="_blank">${link}</a>`;
 }
 
 function iniciarAnimacao(texto) {
-  document.getElementById("home").style.display = "none";
+  document.getElementById("home").classList.add("hidden");
   document.getElementById("animacao").classList.remove("hidden");
 
   const fakeBox = document.getElementById("fakeSearch");
   const mouse = document.getElementById("fakeMouse");
-  const container = document.getElementById("container");
 
   mouse.style.display = "block";
 
   const rect = fakeBox.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
 
   setTimeout(() => {
-    mouse.style.left =
-      rect.left - containerRect.left + 20 + "px";
-    mouse.style.top =
-      rect.top - containerRect.top + 20 + "px";
+    mouse.style.left = rect.left + 20 + "px";
+    mouse.style.top  = rect.top  + 20 + "px";
   }, 500);
 
   setTimeout(() => {
@@ -69,21 +66,17 @@ function digitarTexto(texto) {
 }
 
 function moverParaEnviar(texto) {
-  const mouse = document.getElementById("fakeMouse");
+  const mouse   = document.getElementById("fakeMouse");
   const sendBtn = document.getElementById("fakeSend");
-  const container = document.getElementById("container");
 
   const rect = sendBtn.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
 
   setTimeout(() => {
-    mouse.style.left =
-      rect.left - containerRect.left + rect.width / 2 + "px";
-    mouse.style.top =
-      rect.top - containerRect.top + rect.height / 2 + "px";
+    mouse.style.left = rect.left + rect.width  / 2 + "px";
+    mouse.style.top  = rect.top  + rect.height / 2 + "px";
 
     setTimeout(() => {
-      criarClick(mouse.offsetLeft, mouse.offsetTop);
+      criarClick(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
       setTimeout(() => {
         window.location.href =
@@ -100,11 +93,9 @@ function criarClick(x, y) {
   const click = document.createElement("div");
   click.className = "click-effect";
   click.style.left = x - 10 + "px";
-  click.style.top = y - 10 + "px";
+  click.style.top  = y - 10 + "px";
 
-  document
-    .getElementById("container")
-    .appendChild(click);
+  document.body.appendChild(click);
 
   setTimeout(() => click.remove(), 400);
 }
