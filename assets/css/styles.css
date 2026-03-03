@@ -272,7 +272,17 @@ body {
   word-break: break-word;
 }
 
-.fake-search-text { min-height: 1.4em; }
+.fake-search-text {
+  flex: 1;
+  min-height: 1.4em;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.fake-search-text:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+}
 
 /* blinking cursor inside the typing text */
 .cursor-text {
@@ -304,13 +314,6 @@ body {
   padding: 0.75rem 0.75rem 0.75rem 1.25rem;
 }
 
-.anim-placeholder {
-  flex: 1;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  pointer-events: none;
-}
-
 .anim-send-btn {
   display: flex;
   align-items: center;
@@ -335,8 +338,8 @@ body {
 /* ─── Fake Mouse ─── */
 .fake-mouse {
   position: fixed;
-  width: 22px;
-  height: 32px;
+  width: 44px;
+  height: 64px;
   display: none;
   pointer-events: none;
   z-index: 9999;
