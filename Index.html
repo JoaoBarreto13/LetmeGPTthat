@@ -21,32 +21,42 @@
 
   <!-- HOME screen -->
   <div id="home" class="home-screen">
-    <div class="home-header">
-      <div class="logo-badge">GPT</div>
-      <h1 class="home-title">Just GPT It</h1>
-      <p class="home-subtitle">Porque algumas perguntas já foram respondidas 😄</p>
-    </div>
-
-    <div class="input-area">
-      <div class="input-wrapper">
-        <input
-          type="text"
-          id="pergunta"
-          class="chat-input"
-          placeholder="O que a pessoa deveria ter perguntado ao ChatGPT?"
-          autocomplete="off"
-          onkeydown="if(event.key==='Enter') gerarLink()"
-        />
-        <button class="send-btn" onclick="gerarLink()" title="Gerar Link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-          </svg>
-        </button>
+    <div class="home-topbar">
+      <div class="home-brand">
+        <div class="logo-badge">GPT</div>
+        <span>LetmeGPTthat</span>
       </div>
-      <p class="input-hint">Gere um link e mande para aquela pessoa 😏</p>
     </div>
 
-    <div id="resultado" class="result-box"></div>
+    <div class="home-main">
+      <div class="home-header">
+        <h1 class="home-title">Em que posso ajudar?</h1>
+        <p class="home-subtitle">Digite a pergunta para criar um link no estilo ChatGPT</p>
+      </div>
+
+      <div class="input-area">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="pergunta"
+            class="chat-input"
+            placeholder="Mensagem para o ChatGPT"
+            autocomplete="off"
+            onkeydown="if(event.key==='Enter') gerarLink()"
+          />
+          <button class="send-btn" onclick="gerarLink()" title="Gerar Link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+        <p class="input-hint">Depois envie o link para a pessoa abrir a pergunta direto no ChatGPT.</p>
+      </div>
+
+      <div id="resultado" class="result-box"></div>
+    </div>
+
+    <p class="home-footer">O ChatGPT pode cometer erros. Confira informações importantes.</p>
   </div>
 
   <!-- ANIMATION screen -->
