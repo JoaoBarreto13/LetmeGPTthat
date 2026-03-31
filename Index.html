@@ -63,29 +63,39 @@
   <div id="animacao" class="hidden anim-screen">
     <aside class="anim-sidebar">
       <div class="anim-side-top">
-        <div class="anim-side-brand">
-          <div class="anim-swirl">◎</div>
-          <span>ChatGPT</span>
+        <div class="anim-side-head">
+          <div class="anim-side-brand">
+            <div class="anim-swirl">◎</div>
+          </div>
+          <button class="anim-collapse" aria-label="Recolher barra">◧</button>
         </div>
-        <button class="anim-new-chat">Novo chat</button>
+
         <nav class="anim-side-menu">
-          <span>Buscar em chats</span>
-          <span>Imagens</span>
-          <span>Aplicativos</span>
-          <span>Investigacao</span>
-          <span>Health</span>
+          <span><i>✎</i>Novo chat</span>
+          <span><i>⌕</i>Buscar em chats</span>
+          <span><i>🖼</i>Imagens</span>
+          <span><i>◫</i>Aplicativos</span>
+          <span><i>✈</i>Investigacao</span>
+          <span><i>♡</i>Health</span>
         </nav>
       </div>
+
       <div class="anim-side-bottom">
-        <span>Configuracoes</span>
-        <span>Ajuda</span>
-        <button class="anim-enter-side">Entrar</button>
+        <span><i>◌</i>Confira planos e precos</span>
+        <span><i>⚙</i>Configuracoes</span>
+        <span><i>◍</i>Ajuda</span>
+
+        <div class="anim-side-card">
+          <strong>Receba respostas personalizadas para voce</strong>
+          <p>Entre para receber respostas com base em chats salvos, alem de criar imagens e carregar arquivos.</p>
+          <button class="anim-enter-side">Entrar</button>
+        </div>
       </div>
     </aside>
 
     <main class="anim-main">
       <div class="anim-header">
-        <div class="anim-title-top">ChatGPT</div>
+        <div class="anim-title-top">ChatGPT <span>⌄</span></div>
         <div class="anim-auth-actions">
           <button class="anim-login">Entrar</button>
           <button class="anim-signup">Cadastre-se gratuitamente</button>
@@ -101,7 +111,7 @@
             <div id="fakeSearch" class="fake-search-text" data-placeholder="Pergunte alguma coisa"></div>
 
             <div class="anim-right-controls">
-              <div id="fakeVoice" class="anim-voice-btn">voz</div>
+              <div id="fakeVoice" class="anim-voice-btn"><span class="voice-bars">◠◡</span> voz</div>
               <button id="fakeSend" class="anim-send-btn" type="button" aria-label="Enviar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
                   <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
