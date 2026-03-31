@@ -26,6 +26,8 @@ function gerarLink() {
 }
 
 function iniciarAnimacao(texto) {
+  document.documentElement.setAttribute("data-theme", "light");
+  document.body.classList.add("mode-anim");
   document.getElementById("home").classList.add("hidden");
   document.getElementById("animacao").classList.remove("hidden");
 
@@ -37,8 +39,7 @@ function iniciarAnimacao(texto) {
   const rect = fakeBox.getBoundingClientRect();
 
   setTimeout(() => {
-    mouse.style.left = rect.left + 20 + "px";
-    mouse.style.top  = rect.top  + 20 + "px";
+    moverMousePara(rect.left + 30, rect.top + 24, 800);
   }, 500);
 
   setTimeout(() => {
@@ -48,10 +49,17 @@ function iniciarAnimacao(texto) {
 
 function digitarTexto(texto) {
   const fakeBox = document.getElementById("fakeSearch");
+  const sendBtn = document.getElementById("fakeSend");
+  const voiceBtn = document.getElementById("fakeVoice");
   let i = 0;
 
   function digitar() {
     if (i < texto.length) {
+      if (i === 0) {
+        sendBtn.classList.add("show");
+        voiceBtn.style.display = "none";
+      }
+
       fakeBox.innerHTML =
         texto.slice(0, i + 1) +
         '<span class="cursor-text"></span>';
@@ -70,23 +78,32 @@ function moverParaEnviar(texto) {
   const sendBtn = document.getElementById("fakeSend");
 
   const rect = sendBtn.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
 
   setTimeout(() => {
-    mouse.style.left = rect.left + rect.width  / 2 + "px";
-    mouse.style.top  = rect.top  + rect.height / 2 + "px";
+    moverMousePara(x, y, 1050);
 
     setTimeout(() => {
-      criarClick(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      sendBtn.style.transform = "scale(0.92)";
+      criarClick(x, y);
 
       setTimeout(() => {
         window.location.href =
           "https://chat.openai.com/?q=" +
           encodeURIComponent(texto);
-      }, 600);
+      }, 650);
 
-    }, 1000);
+    }, 1150);
 
-  }, 500);
+  }, 450);
+}
+
+function moverMousePara(x, y, duracao = 950) {
+  const mouse = document.getElementById("fakeMouse");
+  mouse.style.transitionDuration = duracao + "ms";
+  mouse.style.left = x + "px";
+  mouse.style.top = y + "px";
 }
 
 function criarClick(x, y) {

@@ -61,27 +61,60 @@
 
   <!-- ANIMATION screen -->
   <div id="animacao" class="hidden anim-screen">
-    <div class="anim-header">
-      <div class="anim-logo">
-        <div class="logo-badge small">GPT</div>
-        <span>ChatGPT</span>
+    <aside class="anim-sidebar">
+      <div class="anim-side-top">
+        <div class="anim-side-brand">
+          <div class="anim-swirl">◎</div>
+          <span>ChatGPT</span>
+        </div>
+        <button class="anim-new-chat">Novo chat</button>
+        <nav class="anim-side-menu">
+          <span>Buscar em chats</span>
+          <span>Imagens</span>
+          <span>Aplicativos</span>
+          <span>Investigacao</span>
+          <span>Health</span>
+        </nav>
       </div>
-    </div>
+      <div class="anim-side-bottom">
+        <span>Configuracoes</span>
+        <span>Ajuda</span>
+        <button class="anim-enter-side">Entrar</button>
+      </div>
+    </aside>
 
-    <div class="anim-messages"></div>
-
-    <div class="anim-input-row">
-      <div class="anim-input-box">
-        <div id="fakeSearch" class="fake-search-text" data-placeholder="Mensagem para o ChatGPT"></div>
-        <div id="fakeSend" class="anim-send-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-          </svg>
+    <main class="anim-main">
+      <div class="anim-header">
+        <div class="anim-title-top">ChatGPT</div>
+        <div class="anim-auth-actions">
+          <button class="anim-login">Entrar</button>
+          <button class="anim-signup">Cadastre-se gratuitamente</button>
         </div>
       </div>
-    </div>
 
-    <p class="anim-disclaimer">Redirecionando você ao ChatGPT…</p>
+      <div class="anim-center">
+        <h2 class="anim-hero">Tudo pronto? Entao vamos la!</h2>
+
+        <div class="anim-input-row">
+          <div class="anim-input-box">
+            <div class="anim-plus">+</div>
+            <div id="fakeSearch" class="fake-search-text" data-placeholder="Pergunte alguma coisa"></div>
+
+            <div class="anim-right-controls">
+              <div id="fakeVoice" class="anim-voice-btn">voz</div>
+              <button id="fakeSend" class="anim-send-btn" type="button" aria-label="Enviar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                  <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="m13 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="anim-disclaimer">Ao enviar mensagens para o ChatGPT, um chatbot de IA, voce aceita nossos Termos e reconhece nossa Politica de Privacidade.</p>
+    </main>
   </div>
 
   <!-- Fake cursor -->
