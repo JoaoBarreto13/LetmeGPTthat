@@ -1,23 +1,34 @@
 const params = new URLSearchParams(window.location.search);
-const perguntaURL = params.get("q");
+const perguntaCompacta = params.get("s");
+const perguntaURLLegada = params.get("q");
+
+let perguntaURL = "";
+
+if (perguntaCompacta) {
+  perguntaURL = decodificarPerguntaCompacta(perguntaCompacta);
+} else if (perguntaURLLegada) {
+  perguntaURL = perguntaURLLegada;
+}
 
 if (perguntaURL) {
   iniciarAnimacao(perguntaURL);
 }
 
 function gerarLink() {
-  const pergunta = document.getElementById("pergunta").value;
+  const pergunta = document.getElementById("pergunta").value.trim();
 
-  if (!pergunta.trim()) {
+  if (!pergunta) {
     alert("Digite algo primeiro");
     return;
   }
 
+  const perguntaCodificada = codificarPerguntaCompacta(pergunta);
+
   const link =
     window.location.origin +
     window.location.pathname +
-    "?q=" +
-    encodeURIComponent(pergunta);
+    "?s=" +
+    perguntaCodificada;
 
   const linkBonito = `${window.location.origin}${window.location.pathname}`;
 
@@ -59,6 +70,36 @@ async function copiarLinkGerado(link) {
     setTimeout(() => {
       botaoCopiar.textContent = "Copiar link";
     }, 1400);
+  }
+}
+
+function codificarPerguntaCompacta(texto) {
+  const bytes = new TextEncoder().encode(texto);
+  let binario = "";
+
+  bytes.forEach((byte) => {
+    binario += String.fromCharCode(byte);
+  });
+
+  return btoa(binario)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+function decodificarPerguntaCompacta(token) {
+  try {
+    const base64 = token
+      .replace(/-/g, "+")
+      .replace(/_/g, "/");
+
+    const padding = "=".repeat((4 - (base64.length % 4)) % 4);
+    const binario = atob(base64 + padding);
+    const bytes = Uint8Array.from(binario, (char) => char.charCodeAt(0));
+
+    return new TextDecoder().decode(bytes);
+  } catch (erro) {
+    return "";
   }
 }
 
