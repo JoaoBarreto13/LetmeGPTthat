@@ -19,10 +19,47 @@ function gerarLink() {
     "?q=" +
     encodeURIComponent(pergunta);
 
+  const linkBonito = `${window.location.origin}${window.location.pathname}`;
+
   const resultado = document.getElementById("resultado");
-  resultado.innerHTML =
-    `Link para enviar:<br><br>
-     <a href="${link}" target="_blank">${link}</a>`;
+  resultado.innerHTML = `
+    <div class="result-header">
+      <strong>Link pronto para compartilhar</strong>
+      <span class="result-subtitle">A pessoa vai abrir com a pergunta preenchida.</span>
+    </div>
+
+    <div class="result-url-wrap">
+      <span class="result-url-base">${linkBonito}</span>
+      <input type="text" class="result-url-input" value="${link}" readonly aria-label="Link gerado" />
+    </div>
+
+    <div class="result-actions">
+      <button type="button" class="result-btn result-btn-copy" onclick="copiarLinkGerado('${link}')">Copiar link</button>
+      <a class="result-btn result-btn-open" href="${link}" target="_blank" rel="noopener noreferrer">Abrir link</a>
+    </div>
+  `;
+}
+
+async function copiarLinkGerado(link) {
+  const botaoCopiar = document.querySelector(".result-btn-copy");
+
+  try {
+    await navigator.clipboard.writeText(link);
+  } catch (erro) {
+    const campoTemporario = document.createElement("textarea");
+    campoTemporario.value = link;
+    document.body.appendChild(campoTemporario);
+    campoTemporario.select();
+    document.execCommand("copy");
+    campoTemporario.remove();
+  }
+
+  if (botaoCopiar) {
+    botaoCopiar.textContent = "Copiado";
+    setTimeout(() => {
+      botaoCopiar.textContent = "Copiar link";
+    }, 1400);
+  }
 }
 
 function iniciarAnimacao(texto) {
